@@ -23,6 +23,17 @@ sayName("DJ");
 
 // code example for Implicit Binding
 
+const MyObj = function() {
+  this.name = "DJ";
+  this.favColor = "Red";
+};
+
+MyObj.prototype.speak = function() {
+  return `My name is ${this.name} and my favorite color is ${this.favColor}`;
+};
+
+MyObj();
+
 // Principle 3
 
 // code example for New Binding
