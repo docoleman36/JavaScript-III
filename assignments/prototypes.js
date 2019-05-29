@@ -67,6 +67,22 @@ Humanoid.prototype.greet = function() {
   return `${this.name} offers a greeting in ${this.language}`;
 };
 
+// Hero
+
+function Hero(att) {
+  Humanoid.call(this, att);
+}
+
+Hero.prototype = Object.create(Humanoid.prototype);
+
+// Villian
+
+function Villian(att) {
+  Humanoid.call(this, att);
+}
+
+Villian.prototype = Object.create(Humanoid.prototype);
+
 /*
  * Inheritance chain: GameObject -> CharacterStats -> Humanoid
  * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
