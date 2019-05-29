@@ -23,36 +23,31 @@ sayName("DJ");
 
 // code example for Implicit Binding
 
-const MyObject = function() {
-  this.name = "Bob";
-  this.myProperty = "property";
+const myObj = {
+  greeting: "Hi",
+  speak: function(name) {
+    console.log(`${this.greeting} my name is ${name}`);
+  }
 };
 
-MyObject.prototype.doStuff = function(action) {
-  console.log(`${this.name} is ${action} !`);
-};
-
-var obj = new MyObject();
-
-obj.doStuff("awesome"); // prints 'MyObjectName is awesome!'
+myObj.speak("DJ");
 
 // Principle 3
 
 // code example for New Binding
 
-function SouthPark(kid) {
-  this.name = "Kyle";
-  this.location = "SouthPark";
+function SouthPark(obj) {
+  this.name = obj.name;
+  this.language = obj.language;
   this.speak = function() {
-    console.log(`${this.name} lives in  ${this.location}`);
+    console.log(this);
+    return `Hello, my name is ${this.name}, and I speak ${this.language}.`;
   };
 }
 
-const eric = new SouthPark("Eric");
-const kenny = new SouthPark("Kenny");
+const eric = new SouthPark({ name: "Eric", language: "English" });
 
 eric.speak();
-kenny.speak();
 
 // Principle 4
 
@@ -64,7 +59,7 @@ const MyObj = function() {
 };
 
 MyObj.prototype.speak = function() {
-  MyObj.call(this, name, favColor);
+  MyObj.call(MyObj);
   console.log(
     `My name is ${this.name} and my favorite color is ${this.favColor}`
   );
